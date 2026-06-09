@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Cairo', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+  direction: rtl;
+  text-align: right;
+  background-color: #020617;
+  color: #f1f5f9;
+}
+
+/* Bento Grid Gloabals & Overrides */
+.bg-white {
+  background-color: #0f172a !important; /* Slate-900 */
+}
+
+/* Card outlines and shadows */
+.border-slate-100, .border-slate-150, .border-slate-200 {
+  border-color: #1e293b !important; /* Slate-800 */
+}
+
+/* Text color overrides */
+.text-slate-900, .text-slate-800, .text-slate-700 {
+  color: #f8fafc !important; /* slate-50 */
+}
+
+.text-slate-650, .text-slate-600, .text-slate-500 {
+  color: #94a3b8 !important; /* slate-400 */
+}
+
+.bg-slate-50, .bg-slate-100 {
+  background-color: #020617 !important; /* slate-950 */
+}
+
+/* Input elements */
+input, select, textarea, option {
+  background-color: #020617 !important;
+  color: #f1f5f9 !important;
+  border: 1px solid #1e293b !important;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #10b981 !important; /* Emerald-500 focus glow */
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.15) !important;
+}
+
+input::placeholder {
+  color: #475569 !important;
+}
+
+/* Table zebra striping in dark layout */
+table th {
+  background-color: #020617 !important;
+  color: #94a3b8 !important;
+}
+
+tr:nth-child(even) {
+  background-color: #0f172a !important;
+}
+
+tr:nth-child(odd) {
+  background-color: #020617 !important;
+}
+
+tr {
+  border-bottom: 1px solid #1e293b !important;
+}
+
+/* Button & interactive hover enhancements */
+.hover\:bg-slate-100:hover, .hover\:bg-slate-50:hover {
+  background-color: #1e293b !important;
+}
+
+.hover\:shadow-md:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.5) !important;
+  border-color: #334155 !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Custom print layouts for A5 documents */
+@media print {
+  @page {
+    size: A5;
+    margin: 10mm;
+  }
+
+  /* إخفاء كل شيء عند الطباعة */
+  body * {
+    visibility: hidden !important;
+  }
+
+  /* إظهار فقط محتوى الفاتورة */
+  #a5_print_document,
+  #a5_print_document * {
+    visibility: visible !important;
+  }
+
+  #a5_print_document {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
+    width: 148mm !important;
+    min-height: 210mm !important;
+    margin: 0 auto !important;
+    padding: 8mm !important;
+    background: white !important;
+    color: black !important;
+    direction: rtl !important;
+    font-family: 'Cairo', sans-serif !important;
+    font-size: 10pt !important;
+    box-shadow: none !important;
+    border: none !important;
+    z-index: 99999 !important;
+  }
+
+  /* إخفاء العلامة المائية عند الطباعة */
+  #a5_print_document .watermark-modified {
+    display: none !important;
+  }
+
+  /* تصحيح ألوان الجداول للطباعة */
+  #a5_print_document table th {
+    background-color: #1e293b !important;
+    color: white !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  #a5_print_document tr:nth-child(even) {
+    background-color: #f8fafc !important;
+  }
+
+  #a5_print_document tr:nth-child(odd) {
+    background-color: white !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+}

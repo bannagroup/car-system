@@ -1,0 +1,6 @@
+{
+  "appId": "com.banna.traffic",
+  "appName": "Banna Traffic",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}
